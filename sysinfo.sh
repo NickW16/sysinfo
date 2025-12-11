@@ -30,9 +30,16 @@ function MEM() {
    echo "${MEM_TOTAL}"
 }   
 
-DISK=""
-OS=""
+function OS() {
+   CURRENT_OS=$(lsb_release -a | grep "Description:")
+   echo "OS ${CURRENT_OS}"
+   VERSION=$(uname -a | awk '{print $3}')
+   echo "Kernel version: ${VERSION}"
+   ARCHITECTURE=$(uname -m )
+   echo "Architecture: ${ARCHITECTURE}"
+}
 
+OS  
 separator
 CPU
 separator
