@@ -39,8 +39,15 @@ function OS() {
    echo "Architecture: ${ARCHITECTURE}"
 }
 
+function NET() {
+   IPV4=$(ip -4 addr show | grep inet | awk '{print $2}' | cut -d/ -f1)
+   echo "IPV4: ${IPV4}"
+}
+
 OS  
 separator
 CPU
 separator
 MEM
+separator
+NET
