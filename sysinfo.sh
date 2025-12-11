@@ -11,7 +11,7 @@ separator () {
    }
 
 function CPU() {
-   echo "CPU information using lscpu:"
+   echo "CPU information:"
    CPU_MODEL=$(lscpu | grep "Model name" | cut -f 2 -d ":" | xargs) 
    echo "CPU Model: ${CPU_MODEL}"
    
@@ -22,9 +22,18 @@ function CPU() {
    echo "CPU Frequency: ${CPU_MHZ} "
    return 0
 }
-MEM=""
+
+function MEM() {
+   echo "MEM information:"
+   # Decided to leave 'free -h' since its a complete info
+   MEM_TOTAL=$(free -h)
+   echo "${MEM_TOTAL}"
+}   
+
 DISK=""
 OS=""
 
 separator
 CPU
+separator
+MEM
